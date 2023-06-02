@@ -23,3 +23,14 @@ translateBtn.addEventListener('click', () => {
 
     document.body.append(translateElement);
 });
+
+originalStr.addEventListener('click', () => {
+    leetTranslator.leetLetterIterator();
+    leetTranslator.leetTranslator(input.value);
+
+    // create an element
+    const translatedOriginalElement = document.createElement('div');
+    translatedOriginalElement.innerHTML = leetTranslator.translatedOriginal();
+
+    document.body.append(translatedOriginalElement);
+});
