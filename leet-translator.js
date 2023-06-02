@@ -1,8 +1,12 @@
 const leetTranslatorFactory = () => {
     let letters = [ 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' ];
     let leetChars = ['@', '8', '(', '|)', '3', 'ph', 'g', '#','l', '_|', '|<', '1', "|'|'|", '/\/', '0', '|D', '(,)', '|2', '5', '+', '|_|', '|/', "|/|/'",'><', 'j', '2'];
-    let translated = '';
 
+    // words variables
+    let translated = '';
+    let originalStringVar = '';
+
+    // an empty object to store the words
     const dict = {};
 
     const leetLetterIterator = () => {
@@ -14,8 +18,9 @@ const leetTranslatorFactory = () => {
     }
     
     const leetTranslator = (originalString) => {
-        for (let i = 0; i < originalString.length; i++) {
-            const currentLetter = originalString[i];
+        originalStringVar = originalString;
+        for (let i = 0; i < originalStringVar.length; i++) {
+            const currentLetter = originalStringVar[i];
 
             translated += dict[currentLetter];
         }
@@ -24,16 +29,17 @@ const leetTranslatorFactory = () => {
     const logsTranslated = () => {
         return translated;
     }
+
+    const translatedOriginal = () => {
+        translated = originalStringVar;
+        return translated;
+    }
     
     return { 
         leetLetterIterator,
         leetTranslator,
-        logsTranslated
+        logsTranslated,
+        translatedOriginal
     }
 }
-
-let insta = leetTranslatorFactory();
-insta.leetLetterIterator();
-insta.leetTranslator('fullstack');
-console.log(insta.logsTranslated());
 
